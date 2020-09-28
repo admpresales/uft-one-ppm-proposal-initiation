@@ -45,7 +45,7 @@ AIUtil.FindText("Strategic Portfolio").Click
 'BP:  Click the Tina Fry (Business User) link to log in as Tina Fry
 '===========================================================================================
 AIUtil.FindTextBlock("Tina Fry").Click
-AIUtil.FindText("Size of bubble indicates").Exist
+AIUtil.FindTextBlock("Requests I've Submitted").Exist
 
 '===========================================================================================
 'BP:  Click the Create menu item
