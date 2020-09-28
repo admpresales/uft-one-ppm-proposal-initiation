@@ -1,0 +1,3 @@
+﻿<Properties>
+  <WatchEntry0 value="AIUtil.FindText(&quot;CREATE&quot;,micFromTop,1).Exist" />
+</Properties>
