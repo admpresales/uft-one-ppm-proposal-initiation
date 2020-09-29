@@ -1,5 +1,5 @@
 ﻿'===========================================================
-'20200929 - DJ: Added .sync statements after .click statements and cleaned up some commented code
+'20200929 - DJ: Added .sync statements after .click statements
 '===========================================================
 
 '===========================================================
