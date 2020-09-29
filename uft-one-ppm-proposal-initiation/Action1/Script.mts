@@ -1,4 +1,8 @@
 ﻿'===========================================================
+'20200929 - DJ: Added .sync statements after .click statements and cleaned up some commented code
+'===========================================================
+
+'===========================================================
 'Function to Create a Random Number with DateTime Stamp
 '===========================================================
 Function fnRandomNumberWithDateTimeStamp()
@@ -40,22 +44,26 @@ AIUtil.SetContext AppContext																'Tell the AI engine to point at the 
 'BP:  Click the Executive Overview link
 '===========================================================================================
 AIUtil.FindText("Strategic Portfolio").Click
+AppContext.Sync																				'Wait for the browser to stop spinning
 
 '===========================================================================================
 'BP:  Click the Tina Fry (Business User) link to log in as Tina Fry
 '===========================================================================================
 AIUtil.FindTextBlock("Tina Fry").Click
+AppContext.Sync																				'Wait for the browser to stop spinning
 AIUtil.FindTextBlock("Requests I've Submitted").Exist
 
 '===========================================================================================
 'BP:  Click the Create menu item
 '===========================================================================================
 AIUtil.FindText("CREATE", micFromTop, 1).Click
+AppContext.Sync																				'Wait for the browser to stop spinning
 
 '===========================================================================================
 'BP:  Click the Proposal text
 '===========================================================================================
 AIUtil.FindTextBlock("Proposal").Click
+AppContext.Sync																				'Wait for the browser to stop spinning
 
 '===========================================================================================
 'BP:  Select the "Corporate" value in the Business Unit combobox
@@ -83,6 +91,7 @@ AIUtil("text_box", "Business Objective").Type DataTable.Value("BusinessObjective
 'BP:  Click the Submit text
 '===========================================================================================
 AIUtil.FindText("Submit", micFromRight, 1).Click
+AppContext.Sync																				'Wait for the browser to stop spinning
 AIUtil.FindTextBlock("Your Request is Created").Exist
 AIUtil.FindTextBlock("Status: New").Exist
 
@@ -90,7 +99,9 @@ AIUtil.FindTextBlock("Status: New").Exist
 'BP:  Logout
 '===========================================================================================
 Browser("Create New PFM - Proposal").Page("Req #42952: Details").WebElement("menuUserIcon").Click
+AppContext.Sync																				'Wait for the browser to stop spinning
 AIUtil.FindTextBlock("Sign Out (Tina Fry)").Click
+AppContext.Sync																				'Wait for the browser to stop spinning
 
 AppContext.Close																			'Close the application at the end of your script
 
