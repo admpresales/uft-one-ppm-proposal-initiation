@@ -3,6 +3,7 @@
 '20201001 - DJ: Updated Proposal Name field to use traditional OR as
 '				resolution drives the recognition of this field. Info shared
 '				with AI team, who is looking into this, to retrain the AI
+'20201001 - DJ: Added click on Business Objective label to force autoscroll, for low resolution machines
 '===========================================================
 
 '===========================================================
@@ -88,6 +89,7 @@ Browser("Create New PFM - Proposal").Page("Create New PFM - Proposal").WebEdit("
 '===========================================================================================
 'BP:  Enter the Business Objective value
 '===========================================================================================
+Browser("Create New PFM - Proposal").Page("Create New PFM - Proposal").WebElement("Business Objective Label").Click
 AIUtil("text_box", "Business Objective").Type DataTable.Value("BusinessObjective")
 
 '===========================================================================================
