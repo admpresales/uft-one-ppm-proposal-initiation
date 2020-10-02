@@ -1,5 +1,8 @@
 ﻿'===========================================================
 '20200929 - DJ: Added .sync statements after .click statements
+'20201001 - DJ: Updated Proposal Name field to use traditional OR as
+'				resolution drives the recognition of this field. Info shared
+'				with AI team, who is looking into this, to retrain the AI
 '===========================================================
 
 '===========================================================
@@ -74,7 +77,7 @@ AIUtil("combobox", """Business Unit:").Select "Corporate"
 'BP:  Type a unique proposal name into the Proposal Name field
 '===========================================================================================
 ProposalName = "Proposal Name " & fnRandomNumberWithDateTimeStamp
-AIUtil("text_box", "'Proposal Name:").Type ProposalName
+Browser("Create New PFM - Proposal").Page("Create New PFM - Proposal").WebEdit("Project Name").Set ProposalName
 
 '===========================================================================================
 'BP:  Enter unique text into the Executive Overview: field
