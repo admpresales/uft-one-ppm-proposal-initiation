@@ -4,6 +4,7 @@
 '				resolution drives the recognition of this field. Info shared
 '				with AI team, who is looking into this, to retrain the AI
 '20201001 - DJ: Added click on Business Objective label to force autoscroll, for low resolution machines
+'20201008 - DJ: Modified the Business Unit selection to use traditional OR
 '===========================================================
 
 '===========================================================
@@ -70,9 +71,9 @@ AIUtil.FindTextBlock("Proposal").Click
 AppContext.Sync																				'Wait for the browser to stop spinning
 
 '===========================================================================================
-'BP:  Select the "Corporate" value in the Business Unit combobox
+'BP:  Select the "Corporate" value in the Business Unit combobox, depending on resolution, the OCR will see or not see the *, using traditional OR
 '===========================================================================================
-AIUtil("combobox", """Business Unit:").Select "Corporate"
+Browser("Create New PFM - Proposal").Page("Create New PFM - Proposal").WebList("Business Unit Combobox").Select "Corporate"
 
 '===========================================================================================
 'BP:  Type a unique proposal name into the Proposal Name field
