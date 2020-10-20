@@ -5,6 +5,7 @@
 '				with AI team, who is looking into this, to retrain the AI
 '20201001 - DJ: Added click on Business Objective label to force autoscroll, for low resolution machines
 '20201008 - DJ: Modified the Business Unit selection to use traditional OR
+'20201020 - DJ: Updated to handle changes coming in UFT One 15.0.2
 '===========================================================
 
 '===========================================================
@@ -26,7 +27,7 @@ fnRandomNumberWithDateTimeStamp = Int(sDate & sMonth & sYear & sHour & sMinute &
 '======================== End Function =====================
 End Function
 
-Dim BrowserExecutable, ProposalName, ExecutiveOverview
+Dim BrowserExecutable, ProposalName, ExecutiveOverview, rc
 
 While Browser("CreationTime:=0").Exist(0)   												'Loop to close all open browsers
 	Browser("CreationTime:=0").Close 
@@ -56,7 +57,7 @@ AppContext.Sync																				'Wait for the browser to stop spinning
 '===========================================================================================
 AIUtil.FindTextBlock("Tina Fry").Click
 AppContext.Sync																				'Wait for the browser to stop spinning
-AIUtil.FindTextBlock("Requests I've Submitted").Exist
+rc = AIUtil.FindTextBlock("Requests I've Submitted").Exist
 
 '===========================================================================================
 'BP:  Click the Create menu item
@@ -98,8 +99,8 @@ AIUtil("text_box", "Business Objective").Type DataTable.Value("BusinessObjective
 '===========================================================================================
 AIUtil.FindText("Submit", micFromRight, 1).Click
 AppContext.Sync																				'Wait for the browser to stop spinning
-AIUtil.FindTextBlock("Your Request is Created").Exist
-AIUtil.FindTextBlock("Status: New").Exist
+rc = AIUtil.FindTextBlock("Your Request is Created").Exist
+rc = AIUtil.FindTextBlock("Status: New").Exist
 
 '===========================================================================================
 'BP:  Logout
