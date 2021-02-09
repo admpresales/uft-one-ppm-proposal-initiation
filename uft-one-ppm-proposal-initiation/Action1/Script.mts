@@ -6,6 +6,7 @@
 '20201001 - DJ: Added click on Business Objective label to force autoscroll, for low resolution machines
 '20201008 - DJ: Modified the Business Unit selection to use traditional OR
 '20201020 - DJ: Updated to handle changes coming in UFT One 15.0.2
+'20210209 - DJ: Updated to start the mediaserver service on the UFT One host machine if it isn't running
 '===========================================================
 
 '===========================================================
@@ -27,7 +28,11 @@ fnRandomNumberWithDateTimeStamp = Int(sDate & sMonth & sYear & sHour & sMinute &
 '======================== End Function =====================
 End Function
 
-Dim BrowserExecutable, ProposalName, ExecutiveOverview, rc
+Dim BrowserExecutable, ProposalName, ExecutiveOverview, rc, oShell
+
+Set oShell = CreateObject ("WSCript.shell")
+oShell.run "powershell -command ""Start-Service mediaserver"""
+Set oShell = Nothing
 
 While Browser("CreationTime:=0").Exist(0)   												'Loop to close all open browsers
 	Browser("CreationTime:=0").Close 
